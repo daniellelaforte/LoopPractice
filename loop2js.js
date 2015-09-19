@@ -161,9 +161,11 @@ var swapCase = function(str){
      var arr2 = []
      var arr3 = []
      var count = 0
+     var temp = 0
 
-     for (var i=0; i<arr.length; i++)
-     	arr[i]=arr[i].split("");
+     for (var i=0; i<arr.length; i++){
+     	arr[i]=arr[i].split("");}
+     	
 
      for (var j=0; j<arr.length; j++){
      	for (var k=0; k<arr[j].length; k++){
@@ -171,27 +173,33 @@ var swapCase = function(str){
      		obj[arr[j][k]]++
      	}
             
-          for (key in obj){
+          for (var key in obj){
           	arr2.push(obj[key]);
+          
+          	
           }
           	
-
           arr2.sort();
+          arr2.reverse();
      	  arr3.push(arr2[0])
+     	  
+     	  obj = {}
+     	  arr2=[]
         }
-
-     for (var m=0; m<arr.length-1; m++){
-         count = m 
-     	 if (arr3[m] < arr3[m+1]){
-     	 	count = m + 1
+        
+     for (var m=0; m<arr3.length; m++){
+     	 if (arr3[m] > temp){
+     	 	count = m
+     	 	temp = arr3[m]
      	 }
-     	 	
      }
+     	 if (temp === 1){
+     	    return -1;}
 
-     return arr[m]
-
+     return arr[count]
  }
-
+ 
+ letterCount("This is neeeat realy cool")
 
 
 
